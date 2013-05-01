@@ -49,7 +49,7 @@ int main()
     assert(bank.inquire(aliceAccID) == 15000);
 
     assert(bank.dailyAudit());
-
+    bank.printTransactionList();
     cout << "All tests passed." << endl;
 
     return 0;

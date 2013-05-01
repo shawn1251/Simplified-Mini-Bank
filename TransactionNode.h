@@ -9,6 +9,8 @@ class TransactionNode
 		TransactionNode(int year, int month, int day, int SourceID, int TargetID, int money);
 		virtual ~TransactionNode(void);
 		void FixNext(TransactionNode* next);
+		void PrintNode();
+		TransactionNode* GetNext();
 	private:
 		int m_year;
 		int m_month;

@@ -37,6 +37,7 @@ bool Bank::deposit(int accountID, int amount)
         {
             (*iter)->add(amount);
             m_cash += amount;
+            MakeNode(2013, 5, 1, accountID, accountID, amount);
             return true;
         }
     return false;
@@ -63,6 +64,7 @@ bool Bank::withdraw(int accountID, int amount)
             {
                 (*iter)->add(-amount);
                 m_cash -= amount;
+                MakeNode(2013, 5, 1, accountID, accountID, amount*(-1));
                 return true;
             }
             else
@@ -90,6 +92,7 @@ bool Bank::transfer(int accountID, int beneficiaryID, int amount)
         return false;
     (*iterFrom)->add(-amount);
     (*iterTo)->add(amount);
+    MakeNode(2013, 5, 1, accountID, beneficiaryID, amount);
     return true;
 }
 
@@ -116,4 +119,15 @@ void Bank::MakeNode(int year, int month, int day, int SourceID, int TargetID, in
 		m_tail = new TransactionNode(year, month, day, SourceID, TargetID, money);
 		temp->FixNext(m_tail);
 	}
+}
+
+void Bank::printTransactionList()
+{
+    TransactionNode* temp;
+    temp = m_head;
+    temp->PrintNode();
+    while(temp != NULL){
+        temp->PrintNode();
+        temp = temp->GetNext();
+    }
 }

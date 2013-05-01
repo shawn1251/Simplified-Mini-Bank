@@ -20,6 +20,7 @@ public:
     bool transfer(int accountID, int beneficiaryID, int amount);
     bool dailyAudit(void);
 	void MakeNode(int year, int month, int day, int SourceID, int TargetID, int money);
+    void printTransactionList();
 private:
 	Teller teller1;
 	// Teller teller2;
